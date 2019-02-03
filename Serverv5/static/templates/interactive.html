@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+		<img id="input_image" src="#" alt="input-image"/ width = "45%">
+		<img id="output_image" src="#" alt="output-image"/ width = "45%">
+		<br>
+		<form">
+			script: <select id="scripts" onchange="onScriptSelectionChange()"></select>
+			<br>
+			<br>
+			<div id="args">
+				color: <select id="color">
+			    	<option value="r">red</option>
+			    	<option value="b">blue</option>
+			    	<option value="g">green</option>
+			    </select>
+			</div>
+			<br>
+			<input type="checkbox" id="presetSelect" onclick=onImageInputSelect("preset") onchange="onPresetSelectionChange()" checked> Preset image </button>
+			<select id="presets" onchange="onPresetSelectionChange()"></select>
+			<br>
+			<input type="checkbox" id="ownSelect" onclick=onImageInputSelect("own")> Own image </button>
+			<input type="file" id="filepicker" onchange="readInputImage(this);" accept="image/bmp, image/jpeg, image/png">
+			<br>
+			<button type="button" onclick = onSubmit() >Submit</button>
+		</form>
+		<script type=text/javascript src="{{url_for('static', filename='js/interactive.js')}}"></script>
+{% endblock %}
